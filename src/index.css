@@ -76,3 +76,44 @@ p {
 }
 
 /* Comment Component -- end */
+
+/* CommentForm Component -- start */
+
+.comment-form {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: hsl(0, 100%, 100%);
+}
+
+textarea {
+  max-width: 100%;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  border: 2px solid hsl(223, 19%, 93%);
+}
+
+.comment-form__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  width: 35%;
+  padding: 20px;
+  border: none;
+  border-radius: 7.5px;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: hsl(0, 100%, 100%);
+  background-color: hsl(238, 40%, 52%);
+}
+
+/* CommentForm Component -- end */

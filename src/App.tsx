@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Comment from "./components/Comment";
+import CommentForm from "./components/CommentForm";
 
 function App() {
-  return <Comment />;
+  return <CommentForm />;
 }
 
 export default App;
