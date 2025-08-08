@@ -1,12 +1,8 @@
-import { useState } from 'react'
-import UpvoteButton from './components/UpvoteButton'
+import { useState } from "react";
+import Comment from "./components/Comment";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <UpvoteButton/>
-  )
+  return <Comment />;
 }
 
-export default App
+export default App;

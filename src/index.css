@@ -2,8 +2,28 @@ html {
   width: 100%;
 }
 
+body {
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: hsl(228, 33%, 97%);
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+  color: hsl(211, 10%, 45%);
+}
+
+/* UpvoteButton Component -- start */
+
 .upvote-button {
-  width: 20%;
+  width: 25%;
   padding: 17.5px;
   border-radius: 12.5px;
   display: flex;
@@ -11,3 +31,48 @@ html {
   align-items: center;
   background-color: hsl(228, 33%, 97%);
 }
+
+.upvote-score {
+  font-weight: 500;
+  color: hsl(238, 40%, 52%);
+}
+
+/* UpvoteButton Component -- end */
+
+/* Comment Component -- start */
+
+.comment {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 10px;
+  background-color: hsl(0, 100%, 100%);
+}
+
+.comment__header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.header__username {
+  color: hsl(212, 24%, 26%);
+}
+
+.comment__footer {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__reply-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.footer__reply-button p {
+  color: hsl(238, 40%, 52%);
+}
+
+/* Comment Component -- end */

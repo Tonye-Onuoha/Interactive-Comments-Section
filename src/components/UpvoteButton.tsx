@@ -5,7 +5,8 @@ import incrementIcon from "../assets/images/icon-plus.svg";
 function UpvoteButton() {
     const [score, setScore] = useState(0);
 
-    const incrementScore: Function = () => setScore((prevScore) => prevScore + 1);
+    const incrementScore: Function = () =>
+        setScore((prevScore) => prevScore + 1);
 
     const decrementScore: Function = () =>
         setScore((prevScore) => {
@@ -26,9 +27,11 @@ function UpvoteButton() {
                 }}
                 onMouseLeave={(e) => {
                     e.currentTarget.style.cursor = "default";
-                }}>
-            </img>
-            <span className="upvote-score">{score}</span>
+                }}
+            ></img>
+            <span className="upvote-score">
+                {score}
+            </span>
             <img
                 src={decrementIcon}
                 alt="minus-icon"
@@ -38,8 +41,8 @@ function UpvoteButton() {
                 }}
                 onMouseLeave={(e) => {
                     e.currentTarget.style.cursor = "default";
-                }}>
-            </img>
+                }}
+            ></img>
         </div>
     );
 }
