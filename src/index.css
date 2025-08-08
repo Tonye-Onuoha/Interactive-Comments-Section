@@ -98,6 +98,10 @@ textarea {
   border: 2px solid hsl(223, 19%, 93%);
 }
 
+.error-text {
+  color: hsl(4, 100%, 67%);
+}
+
 .comment-form__footer {
   display: flex;
   justify-content: space-between;
