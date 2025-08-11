@@ -39,10 +39,31 @@ p {
 
 /* UpvoteButton Component -- end */
 
+/* CommentsSection Component -- start */
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CommentsSection Component -- end */
+
+/* CommentsList Component -- start */
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CommentsList Component -- end */
+
 /* Comment Component -- start */
 
 .comment {
   padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -55,8 +76,13 @@ p {
   align-items: center;
   gap: 15px;
 }
+
 .header__username {
   color: hsl(212, 24%, 26%);
+}
+
+img[alt="user-image"] {
+  width: 40px;
 }
 
 .comment__footer {
@@ -73,6 +99,16 @@ p {
 
 .footer__reply-button p {
   color: hsl(238, 40%, 52%);
+}
+
+.reply-container {
+  border-left: 2px solid hsl(223, 19%, 93%);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reply-comment {
+  max-width: 95%;
 }
 
 /* Comment Component -- end */
