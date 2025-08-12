@@ -1,6 +1,7 @@
+import React from 'react';
 import Comment from "./Comment";
 
-type Comment = {
+type CommentType = {
     id: number;
     content: string;
     createdAt: string;
@@ -11,8 +12,9 @@ type Comment = {
 
 
 
-function CommentsList(props: { comments: Comment[] }) {
-    const commentsJSX = [];
+function CommentsList(props: { comments: CommentType[] }) {
+
+    const commentsJSX : React.ReactElement[] = []
 
     function renderComments(comment, commentReplies, reply=false) {
 

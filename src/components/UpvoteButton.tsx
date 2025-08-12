@@ -2,8 +2,8 @@ import { useState } from "react";
 import decrementIcon from "../assets/images/icon-minus.svg";
 import incrementIcon from "../assets/images/icon-plus.svg";
 
-function UpvoteButton() {
-    const [score, setScore] = useState(0);
+function UpvoteButton(props: { userScore: number }) {
+    const [score, setScore] = useState(props.userScore);
 
     const incrementScore: Function = () =>
         setScore((prevScore) => prevScore + 1);
@@ -29,9 +29,7 @@ function UpvoteButton() {
                     e.currentTarget.style.cursor = "default";
                 }}
             ></img>
-            <span className="upvote-score">
-                {score}
-            </span>
+            <span className="upvote-score">{score}</span>
             <img
                 src={decrementIcon}
                 alt="minus-icon"
