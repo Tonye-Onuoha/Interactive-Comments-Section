@@ -5,6 +5,16 @@ import replyIcon from "../assets/images/icon-reply.svg";
 import deleteIcon from "../assets/images/icon-delete.svg";
 import editIcon from "../assets/images/icon-edit.svg";
 
+type ReplyType = {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    user: { image: { png: string; webp: string }; username: string };
+    replyingTo: string;
+    replies?: ReplyType[];
+};
+
 type CommentData = {
   userComment: {
     id: number;
@@ -12,13 +22,14 @@ type CommentData = {
     createdAt: string;
     score: number;
     user: { image: { png: string; webp: string }; username: string };
-    replies: [];
+    replies?: ReplyType[];
+    replyingTo?: string;
   };
   isReply: boolean;
 };
 
 function Comment(props: CommentData) {
-  const username: string | null = useContext(UserContext);
+  const username = useContext(UserContext);
   let renderedComment;
 
   if (props.isReply) {
