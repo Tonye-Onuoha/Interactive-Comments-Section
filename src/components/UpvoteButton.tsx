@@ -1,14 +1,14 @@
 import { useState } from "react";
 import decrementIcon from "../assets/images/icon-minus.svg";
 import incrementIcon from "../assets/images/icon-plus.svg";
+import type { MouseEvent } from 'react';
 
 function UpvoteButton(props: { userScore: number }) {
     const [score, setScore] = useState(props.userScore);
 
-    const incrementScore: Function = () =>
-        setScore((prevScore) => prevScore + 1);
+    const incrementScore: (event: MouseEvent<HTMLImageElement>) => void = () => setScore((prevScore) => prevScore + 1);
 
-    const decrementScore: Function = () =>
+    const decrementScore: (event: MouseEvent<HTMLImageElement>) => void = () =>
         setScore((prevScore) => {
             if (prevScore === 0) return 0;
             else {

@@ -1,12 +1,48 @@
 import { useState, useEffect } from "react";
 import CommentsList from "./CommentsList";
 import CommentForm from "./CommentForm";
+import Modal from "./Modal";
 import UserContext from "../Context";
 
+type User = {
+    image: {
+        png: string;
+        webp: string;
+    };
+    username: string;
+};
+
+type ReplyType = {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    user: { image: { png: string; webp: string }; username: string };
+    replyingTo: string;
+    replies?: ReplyType[];
+};
+
+type CommentType = {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    user: { image: { png: string; webp: string }; username: string };
+    replies: ReplyType[];
+};
+
+
+interface Data {
+    currentUser: User;
+    comments: CommentType[]
+}
+
 function CommentsSection() {
-    const [userComments, setUserComments] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(null);
+    const [userComments, setUserComments] = useState<Data | null>(null);
+    //const [commentId, setCommentId] = useState(null);
+    // const [status, setStatus] = useState("");
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isError, setIsError] = useState<string>("");
 
     useEffect(() => {
         let ignore = false;
@@ -17,8 +53,11 @@ function CommentsSection() {
                 const commentsData = await response.json();
                 if (!ignore) setUserComments({ ...commentsData });
             } catch (e) {
-                console.error(e.message);
-                setIsError(e.message);
+                if (typeof e === "object" && e !== null && "message" in e && typeof e.message === "string") {
+                    console.error(e.message);
+
+                    setIsError(e.message);
+                }
             } finally {
                 setIsLoading(false);
             }
@@ -26,7 +65,9 @@ function CommentsSection() {
 
         getComments();
 
-        return () => (ignore = false);
+        return () => {
+            ignore = true
+        };
     }, []);
 
     if (isLoading) {
@@ -44,11 +85,13 @@ function CommentsSection() {
     }
 
     return (
-        <UserContext value={userComments.currentUser.username}>
+        <UserContext value={userComments?.currentUser.username}>
             <div className="comments-section">
-                {Object.keys(userComments).length > 0 && <CommentsList comments={userComments.comments} />}
-                {Object.keys(userComments).length > 0 && <CommentForm user={userComments.currentUser} />}
+                {Object.keys(userComments ?? []).length > 0 && <CommentsList comments={userComments?.comments} />}
+                {Object.keys(userComments ?? []).length > 0 && <CommentForm onSubmit={() => {}} user={userComments?.currentUser} />}
             </div>
+            {status == "delete" && <div className="modal-background"></div>}
+            {status == "delete" && <Modal />}
         </UserContext>
     );
 }

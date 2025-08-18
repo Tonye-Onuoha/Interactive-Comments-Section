@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { FormEvent, ChangeEvent } from 'react';
 
 type User = {
     image: {
@@ -8,13 +9,13 @@ type User = {
     username: string;
 };
 
-function CommentForm(props: { onSubmit: Function; user: User }) {
+function CommentForm(props: { onSubmit: Function; user: User | undefined }) {
     const [comment, setComment] = useState("");
     const [error, setError] = useState("");
 
-    const handleComment: Function = (e: any) => setComment(e.currentTarget.value);
+    const handleComment: (e: ChangeEvent<HTMLTextAreaElement>) => void = (e: ChangeEvent<HTMLTextAreaElement>) => setComment(e.currentTarget.value);
 
-    const handleFormSubmit: Function = (e: any) => {
+    const handleFormSubmit: (e: FormEvent<HTMLFormElement>) => void = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault(); // prevent default form behaviour (browser reload)
         const commentContent = comment.trim();
         if (!commentContent) setError("Input field cannot be empty.");
@@ -47,7 +48,7 @@ function CommentForm(props: { onSubmit: Function; user: User }) {
             ></textarea>
             {error && <p className="error-text">{error}</p>}
             <div className="comment-form__footer">
-                <img src={props.user.image.png} alt="user-image" />
+                <img src={props.user?.image.png} alt="user-image" />
                 <button type="submit">SEND</button>
             </div>
         </form>
