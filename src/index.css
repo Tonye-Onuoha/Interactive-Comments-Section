@@ -358,6 +358,8 @@ button {
   .upvote-container {
     display: block;
     min-height: 120px;
+    min-width: 6%;
+    max-width: 6%;
   }
   .upvote-button {
     width: auto;

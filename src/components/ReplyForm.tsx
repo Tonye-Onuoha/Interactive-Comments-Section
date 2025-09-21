@@ -43,9 +43,11 @@ function ReplyForm(props: ReplyFormProp) {
         e: ChangeEvent<HTMLTextAreaElement>,
     ) => {
         // We slice the reply content to save the actual input value without the "@username" signature.
-        const inputValue = e.currentTarget.value.slice(2 + props.comment.user.username.length)
+        const inputValue = e.currentTarget.value.slice(
+            2 + props.comment.user.username.length,
+        );
         setReply(inputValue);
-    }
+    };
 
     const handleFormSubmit: (e: FormEvent<HTMLFormElement>) => void = (
         e: FormEvent<HTMLFormElement>,
@@ -77,7 +79,12 @@ function ReplyForm(props: ReplyFormProp) {
     };
 
     return (
-        <form className={props.forReply ? "comment-form reply-form" : "comment-form"}  onSubmit={handleFormSubmit}>
+        <form
+            className={
+                props.forReply ? "comment-form reply-form" : "comment-form"
+            }
+            onSubmit={handleFormSubmit}
+        >
             <textarea
                 name="comment"
                 value={`@${props.comment.user.username} ${reply}`}

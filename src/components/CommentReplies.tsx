@@ -23,12 +23,17 @@ type Replies = {
 };
 
 function CommentReplies(props: Replies) {
-    const replies = props.replies ?  props.replies : [];
+    const replies = props.replies ? props.replies : [];
 
     return (
         <div className="reply-container">
-            {replies.length > 0 && replies.map((reply) => (
-                    <Comment key={reply.id} userComment={reply} isReply={true} />
+            {replies.length > 0 &&
+                replies.map((reply) => (
+                    <Comment
+                        key={reply.id}
+                        userComment={reply}
+                        isReply={true}
+                    />
                 ))}
         </div>
     );

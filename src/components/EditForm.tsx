@@ -38,17 +38,18 @@ function EditForm(props: EditFormProps) {
     const [error, setError] = useState("");
     const commentsContext = useContext(CommentsContext) as Context;
 
-    const handleEditForm = (e: ChangeEvent<HTMLTextAreaElement>) =>
-        {
-            if (props.forReply) {
-                // We slice the reply content to save the actual input value without the "@username" signature.
-                const replyingToLength = props.comment.replyingTo?.length as number;
-                const inputValue = e.currentTarget.value.slice(2 + replyingToLength);
-                setText(inputValue);
-            } else {
-                setText(e.currentTarget.value);
-            }
+    const handleEditForm = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        if (props.forReply) {
+            // We slice the reply content to save the actual input value without the "@username" signature.
+            const replyingToLength = props.comment.replyingTo?.length as number;
+            const inputValue = e.currentTarget.value.slice(
+                2 + replyingToLength,
+            );
+            setText(inputValue);
+        } else {
+            setText(e.currentTarget.value);
         }
+    };
 
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault(); // prevent default form behaviour (browser reload)
@@ -70,13 +71,16 @@ function EditForm(props: EditFormProps) {
                 },
                 replies: props.comment.replies ?? [],
             };
-            if (props.forReply) updatedComment["replyingTo"] = props.comment.replyingTo;
+            if (props.forReply)
+                updatedComment["replyingTo"] = props.comment.replyingTo;
             commentsContext.updateComment(props.comment.id, updatedComment);
             props.onFinishEditing();
         }
     };
 
-    const textValue = props.forReply ? `@${props.comment.replyingTo} ${text}` : text;
+    const textValue = props.forReply
+        ? `@${props.comment.replyingTo} ${text}`
+        : text;
 
     return (
         <form className="edit-form" onSubmit={handleFormSubmit}>
@@ -91,7 +95,10 @@ function EditForm(props: EditFormProps) {
                     type="submit"
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.cursor = "pointer")
-                    }>UPDATE</button>
+                    }
+                >
+                    UPDATE
+                </button>
             </div>
             {error && <p className="error-text">{error}</p>}
         </form>
