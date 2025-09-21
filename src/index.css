@@ -33,9 +33,14 @@ p {
 
 /* UpvoteButton Component -- start */
 
+.upvote-container {
+  display: none;
+}
+
 .upvote-button {
   width: 25%;
   padding: 17.5px;
+  box-sizing: border-box;
   border-radius: 12.5px;
   display: flex;
   justify-content: space-between;
@@ -77,9 +82,22 @@ p {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   border-radius: 10px;
   background-color: hsl(0, 100%, 100%);
+  width: 100%;
+}
+
+.comment-container {
+  display: flex;
+  gap: 20px;
+}
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
 }
 
 .comment__header {
@@ -103,6 +121,10 @@ img[alt="user-image"] {
   font-size: clamp(16px, 1rem, 28px);
 }
 
+.replying-to {
+  color: hsl(238, 40%, 52%);
+}
+
 .comment__footer {
   display: flex;
   flex-wrap: wrap;
@@ -110,6 +132,15 @@ img[alt="user-image"] {
   align-items: center;
   gap: 20px;
 }
+
+.comment__footer .upvote-button {
+  min-width: 100px;
+}
+
+.header__reply-button {
+  display: none;
+}
+
 .footer__reply-button {
   display: flex;
   justify-content: space-between;
@@ -118,14 +149,9 @@ img[alt="user-image"] {
   font-weight: 500;
 }
 
+.header__reply-button p,
 .footer__reply-button p {
   color: hsl(238, 40%, 52%);
-}
-
-.reply-container {
-  border-left: 2px solid hsl(223, 19%, 93%);
-  display: flex;
-  justify-content: flex-end;
 }
 
 .reply-comment {
@@ -145,6 +171,11 @@ img[alt="user-image"] {
 .modify-container {
   display: flex;
   gap: 10px;
+  margin-left: auto;
+}
+
+.modify-desktop {
+  display: none;
 }
 
 .delete-container,
@@ -156,16 +187,30 @@ img[alt="user-image"] {
 
 img[alt="edit-icon"],
 img[alt="delete-icon"] {
-  width: 3vw;
-  max-width: 24px;
+  width: clamp(12px, 3vw, 24px);
 }
 
 /* Comment Component -- end */
 
+/* CommentReplies Component -- start */
+
+.reply-container {
+  width: 100%;
+  border-left: 2px solid hsl(223, 19%, 93%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+/* CommentReplies Component -- end */
+
 /* CommentForm Component -- start */
 
 .comment-form {
+  width: 100%;
   padding: 20px;
+  box-sizing: border-box;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -174,13 +219,19 @@ img[alt="delete-icon"] {
 }
 
 textarea {
+  width: 100%;
   max-width: 100%;
   padding: 20px 30px;
   border-radius: 10px;
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
   font-size: 16px;
+  color: hsl(212, 24%, 26%);
   border: 2px solid hsl(223, 19%, 93%);
+}
+
+textarea:hover {
+  cursor: pointer;
 }
 
 .error-text {
@@ -195,7 +246,7 @@ textarea {
 
 button {
   width: 35%;
-  padding: 20px;
+  padding: 15px;
   border: none;
   border-radius: 7.5px;
   font-family: "Rubik", sans-serif;
@@ -206,6 +257,15 @@ button {
 }
 
 /* CommentForm Component -- end */
+
+/* ReplyForm Component -- start */
+
+.reply-form {
+  width: 100%;
+  max-width: 95%;
+}
+
+/* ReplyForm Component -- end */
 
 /* Modal Component -- start */
 
@@ -227,7 +287,7 @@ button {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   position: absolute;
   top: 250px;
   left: 0;
@@ -243,11 +303,13 @@ button {
 
 .modal__buttons {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
 }
 
 .modal__buttons button {
   width: 50%;
+  max-width: 350px;
   font-size: clamp(16px, 1rem, 28px);
 }
 
@@ -262,3 +324,70 @@ button {
 }
 
 /* Modal Component -- end */
+
+/* EditForm Component -- start */
+
+.edit-form {
+  width: 100%;
+}
+
+.edit-form textarea {
+  margin-bottom: 20px;
+  color: hsl(212, 24%, 26%);
+}
+
+.update-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* EditForm Component -- end */
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 1050px) {
+  .comments-section {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .modal {
+    width: 30vw;
+    min-height: 200px;
+    justify-content: center;
+  }
+  .upvote-container {
+    display: block;
+    min-height: 120px;
+  }
+  .upvote-button {
+    width: auto;
+    height: 100%;
+    max-height: 120px;
+    flex-direction: column;
+  }
+  .header__reply-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    font-weight: 500;
+  }
+  .comment__footer {
+    display: none;
+  }
+  .modify-desktop {
+    display: flex;
+  }
+  img[alt="edit-icon"],
+  img[alt="delete-icon"] {
+    width: clamp(12px, 1vw, 24px);
+  }
+  /* ACTIVE STATES */
+  .header__reply-button:hover *,
+  button[type="submit"]:hover,
+  .modify-container .delete-container:hover,
+  .modify-container .edit-container:hover {
+    opacity: 0.5;
+  }
+}

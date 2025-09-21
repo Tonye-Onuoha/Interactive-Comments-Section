@@ -6,6 +6,10 @@ import checker from "vite-plugin-checker";
 export default defineConfig({
   plugins: [
     react(),
-    checker({ typescript: true }) // Enable TypeScript checking
+    checker({
+      typescript: {
+        tsconfigPath: "./tsconfig.app.json" // Adjust this path if your tsconfig is named differently or located elsewhere
+      }
+    })
   ]
 });
