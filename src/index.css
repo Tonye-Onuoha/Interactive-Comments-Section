@@ -343,6 +343,29 @@ button {
 
 /* EditForm Component -- end */
 
+/* Loading & Error Styles -- start */
+
+.loading-screen,
+.error-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  color: hsl(238, 40%, 52%);
+  text-align: center;
+}
+
+.error-text {
+  color: hsl(14, 86%, 42%);
+  text-align: center;
+}
+
+/* Loading & Error Styles -- end */
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 1050px) {
