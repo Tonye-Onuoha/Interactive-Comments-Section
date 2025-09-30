@@ -32,7 +32,7 @@ function CommentsList(props: { comments: CommentType[] | undefined }) {
         <Comment key={comment.id} userComment={comment} isReply={false} />
     ));
 
-    return <div className="comments-list">{commentList}</div>;
+    return <div className="comments-list" data-testid="comments-list">{commentList}</div>;
 }
 
 export default CommentsList;

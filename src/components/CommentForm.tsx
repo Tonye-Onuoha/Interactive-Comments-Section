@@ -72,13 +72,14 @@ function CommentForm(props: {
     };
 
     return (
-        <form className="comment-form" onSubmit={handleFormSubmit}>
+        <form className="comment-form" data-testid="comment-form" onSubmit={handleFormSubmit}>
             <textarea
                 name="comment"
                 value={comment}
                 placeholder="Add a comment"
                 rows={7}
                 onChange={handleComment}
+                data-testid="form-input"
             ></textarea>
             {error && <p className="error-text">{error}</p>}
             <div className="comment-form__footer">
@@ -88,6 +89,7 @@ function CommentForm(props: {
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.cursor = "pointer")
                     }
+                    data-testid="form-submit"
                 >
                     SEND
                 </button>

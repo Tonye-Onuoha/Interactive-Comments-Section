@@ -72,7 +72,7 @@ function UpvoteButton(props: UpvoteProps) {
                     e.currentTarget.style.cursor = "default";
                 }}
             ></img>
-            <span className="upvote-score">{score}</span>
+            <span data-testid="score" className="upvote-score">{score}</span>
             <img
                 src={decrementIcon}
                 alt="minus-icon"

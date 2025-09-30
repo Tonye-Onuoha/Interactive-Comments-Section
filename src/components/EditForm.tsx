@@ -96,6 +96,7 @@ function EditForm(props: EditFormProps) {
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.cursor = "pointer")
                     }
+                    data-testid="update-button"
                 >
                     UPDATE
                 </button>

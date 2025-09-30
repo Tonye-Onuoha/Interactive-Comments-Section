@@ -100,6 +100,7 @@ function ReplyForm(props: ReplyFormProp) {
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.cursor = "pointer")
                     }
+                    data-testid="reply-button"
                 >
                     REPLY
                 </button>

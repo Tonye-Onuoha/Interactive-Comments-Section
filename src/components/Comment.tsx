@@ -2,13 +2,13 @@ import { useState, useContext } from "react";
 import type { ReactNode } from "react";
 import UpvoteButton from "./UpvoteButton";
 import EditForm from "./EditForm";
-import { CommentsContext } from "../Context";
+import CommentReplies from "./CommentReplies";
+import ReplyForm from "./ReplyForm";
 import replyIcon from "../assets/images/icon-reply.svg";
 import deleteIcon from "../assets/images/icon-delete.svg";
 import editIcon from "../assets/images/icon-edit.svg";
+import { CommentsContext } from "../Context";
 import { format } from "timeago.js";
-import CommentReplies from "./CommentReplies";
-import ReplyForm from "./ReplyForm";
 
 type User = {
     image: {
@@ -70,6 +70,7 @@ function Comment(props: CommentData) {
         <>
             <div
                 className={props.isReply ? "reply-comment comment" : "comment"}
+                data-testid="comment"
             >
                 <div className="comment-container">
                     <div className="upvote-container">
@@ -136,6 +137,7 @@ function Comment(props: CommentData) {
                                         (e.currentTarget.style.cursor =
                                             "pointer")
                                     }
+                                    data-testid="reply-icon"
                                 >
                                     <img src={replyIcon} alt="reply-icon" />
                                     <p>Reply</p>
