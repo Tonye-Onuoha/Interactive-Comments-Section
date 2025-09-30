@@ -162,7 +162,7 @@ function CommentsSection() {
 
         async function getComments() {
             try {
-                const response = await fetch("data.json");
+                const response = await fetch("http://localhost:5173/data.json");
                 const commentsData = await response.json();
                 if (!ignore) setUserComments({ ...commentsData });
             } catch (e) {
@@ -173,7 +173,6 @@ function CommentsSection() {
                     typeof e.message === "string"
                 ) {
                     console.error(e.message);
-
                     setIsError(e.message);
                 }
             } finally {
@@ -191,13 +190,13 @@ function CommentsSection() {
     if (isLoading) {
         return (
             <div className="loading-screen">
-                <p className="loading-message">Loading comments...</p>
+                <p className="loading-text">Loading comments...</p>
             </div>
         );
     } else if (!isLoading && isError) {
         return (
             <div className="error-screen">
-                <p className="error-message">Failed to load comments!</p>
+                <p className="error-text">Failed to load comments!</p>
             </div>
         );
     }
