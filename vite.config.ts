@@ -11,5 +11,10 @@ export default defineConfig({
         tsconfigPath: "./tsconfig.app.json" // Adjust this path if your tsconfig is named differently or located elsewhere
       }
     })
-  ]
+  ],
+  test: {
+    globals: true,
+    environment: "jsdom", // use JSDOM to simulate the browser
+    setupFiles: "./src/setupTests.ts" // setup file (like CRA)
+  }
 });
