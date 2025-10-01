@@ -8,7 +8,6 @@ describe("CommentsSection component tests", () => {
         global.fetch = vi.fn(
             () => {
                 const data = {...mockedData}
-                console.log(data.comments[0].replies);
                 return (
                     Promise.resolve({
                     json: () => Promise.resolve(data)
