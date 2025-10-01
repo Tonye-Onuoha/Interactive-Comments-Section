@@ -162,7 +162,7 @@ function CommentsSection() {
 
         async function getComments() {
             try {
-                const response = await fetch("http://localhost:5173/data.json");
+                const response = await fetch("/data.json");
                 const commentsData = await response.json();
                 if (!ignore) setUserComments({ ...commentsData });
             } catch (e) {
