@@ -56,7 +56,10 @@ function CommentsSection() {
                       comments: [newComment, ...userComments?.comments],
                   }
                 : undefined;
-        if (updatedData) setUserComments(updatedData);
+        if (updatedData) {
+            setUserComments(updatedData);
+            sessionStorage.setItem("comments", JSON.stringify(updatedData));
+        }
     };
 
     const handleDeleteState = (id: number): void => {
@@ -92,6 +95,7 @@ function CommentsSection() {
         ) as CommentType[];
         const user = userComments?.currentUser as User;
         setUserComments({ currentUser: user, comments: filteredComments });
+        sessionStorage.setItem("comments", JSON.stringify({ currentUser: user, comments: filteredComments }));
         setIsDeleting(false);
     };
 
@@ -123,6 +127,7 @@ function CommentsSection() {
         ) as CommentType[];
         const user = userComments?.currentUser as User;
         setUserComments({ currentUser: user, comments: updatedComments });
+        sessionStorage.setItem("comments", JSON.stringify({ currentUser: user, comments: updatedComments }));
     };
 
     const commentRepliesUpdater = (comment: any, id: number, newReply: any) => {
@@ -155,16 +160,31 @@ function CommentsSection() {
         ) as CommentType[];
         const user = userComments?.currentUser as User;
         setUserComments({ currentUser: user, comments: updatedComments });
+        sessionStorage.setItem("comments", JSON.stringify({ currentUser: user, comments: updatedComments }));
     };
 
     useEffect(() => {
+        const savedComments = sessionStorage.getItem("comments");
+        if (savedComments) {
+            const commentsObj = JSON.parse(savedComments);
+            setUserComments(commentsObj);
+            setIsLoading(false);
+            return;
+        }
+
         let ignore = false;
 
         async function getComments() {
             try {
                 const response = await fetch("/data.json");
                 const commentsData = await response.json();
-                if (!ignore) setUserComments({ ...commentsData });
+                if (!ignore) {
+                    setUserComments({ ...commentsData });
+                    sessionStorage.setItem(
+                        "comments",
+                        JSON.stringify(commentsData),
+                    );
+                }
             } catch (e) {
                 if (
                     typeof e === "object" &&
