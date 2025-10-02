@@ -47,6 +47,14 @@ function Comment(props: CommentData) {
     const username = commentsContext.user?.username as string;
     const repliesLength = props.userComment.replies?.length;
     const commentHasReplies = repliesLength ? repliesLength > 0 : false;
+    let createdAt = undefined;
+
+    if (typeof props.userComment.createdAt === "string") {
+        createdAt = new Date(props.userComment.createdAt);
+        createdAt = createdAt.toString() === "Invalid Date" ? props.userComment.createdAt : format(props.userComment.createdAt);
+    } else {
+        createdAt = format(props.userComment.createdAt);
+    }
 
     const handleSwitchEditing = () => setIsEditing(!isEditing);
 
@@ -93,9 +101,7 @@ function Comment(props: CommentData) {
                                 <span className="user-identifier">you</span>
                             )}
                             <p className="header__time-created">
-                                {typeof props.userComment.createdAt !== "object"
-                                    ? props.userComment.createdAt
-                                    : format(props.userComment.createdAt)}
+                                {createdAt}
                             </p>
                             {username === props.userComment.user.username ? (
                                 <div className="modify-container modify-desktop">
