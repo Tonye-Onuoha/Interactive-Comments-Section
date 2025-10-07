@@ -1,50 +1,64 @@
-# Frontend Mentor - Interactive comments section solution
+# 💬 Frontend Mentor - Interactive Comments Section Solution
 
-This is a solution to the
-[Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9).
-Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Interactive Comments Section Challenge](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9) on **Frontend Mentor**.
+Frontend Mentor challenges help developers improve their coding skills by building realistic, production-style projects.
 
-## Table of contents
+---
 
+## 🧭 Table of Contents
 - [Overview](#overview)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [Useful resources](#useful-resources)
+- [My Process](#my-process)
+  - [Built With](#built-with)
+  - [Useful Resources](#useful-resources)
 - [Author](#author)
 
-## Overview
+---
 
-This is a React + Vite project in which the main objective is to build out a "Interactive comments section" solution.
+## 📖 Overview
+This is a **React + Vite** project designed to replicate an interactive comments section.
+The goal was to create a clean, responsive, and dynamic comments UI with features similar to real-world comment systems.
 
-### Screenshot
+---
 
+### 🖼️ Screenshot
 ![Screenshot](./interactive-comments-section.png)
 
-### Links
+---
 
-- Live Site URL: [Vercel](https://interactive-comments-section-ten-nu.vercel.app)
+### 🔗 Links
+- **Live Site:** [https://interactive-comments-section-ten-nu.vercel.app](https://interactive-comments-section-ten-nu.vercel.app)
 
-## My process
+---
 
-The process was very straightforward. I started by writing out the necessary components of the project. I then broke
-down the styling of components one piece at a time using CSS with the flexbox layout model, while also following the
-mobile-first approach. To complete the layout, I then proceeded to write the media queries for the desktop design.
-Finally I proceeded to write unit and integration tests for the project.
+## 🧩 My Process
+The development process was straightforward and iterative:
+1. **Component Structure** – Broke down the UI into reusable React components.
+2. **Styling** – Used **CSS Flexbox** and a **mobile-first** approach for responsive design.
+3. **Responsiveness** – Added **media queries** to optimize the layout for desktop screens.
+4. **Testing** – Wrote **unit and integration tests** to ensure component stability and interaction accuracy.
 
-### Built with
+---
 
-- Semantic HTML5 JSX markup
-- CSS custom properties
-- Flexbox layout model
-- Media queries
+### ⚙️ Built With
+- ⚛️ **React (Vite)**
+- 🧱 **Semantic HTML5 / JSX**
+- 🎨 **CSS custom properties**
+- 🧭 **Flexbox layout**
+- 🖥️ **Media queries**
 
-### Useful resources
+---
 
-- [W3Schools](https://www.w3schools.com/)
-- [MDN](https://developer.mozilla.org/)
+### 📚 Useful Resources
+- [W3Schools](https://www.w3schools.com/) – General CSS and Flexbox references
+- [MDN Web Docs](https://developer.mozilla.org/) – In-depth documentation for web APIs and standards
 
-## Author
+---
 
-- Email Address - [tonyeonuoha@gmail.com](tonyeonuoha@gmail.com)
+## 👤 Author
+**Tonye Hugo Onuoha**
+📧 [tonyeonuoha@gmail.com](mailto:tonyeonuoha@gmail.com)
+
+---
+
